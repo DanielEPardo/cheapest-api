@@ -1,3 +1,5 @@
+import { TiendaController } from './identificacion/controllers/tienda.controller';
+import { TiendaService } from './identificacion/services/tienda.service';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
@@ -5,6 +7,7 @@ import { AppService } from './app.service';
 import { InventarioModule } from './inventario/inventario.module';
 import { LogisticaModule } from './logistica/logistica.module';
 import { VentasModule } from './ventas/ventas.module';
+import { IdentificacionModule } from './identificacion/identificacion.module';
 
 @Module({
   imports: [
@@ -12,8 +15,11 @@ import { VentasModule } from './ventas/ventas.module';
     InventarioModule,
     LogisticaModule,
     VentasModule,
+    IdentificacionModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    AppController],
+  providers: [
+    AppService],
 })
-export class AppModule {}
+export class AppModule { }
