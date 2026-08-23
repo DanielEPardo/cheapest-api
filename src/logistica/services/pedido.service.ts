@@ -3,7 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { TiendaClientMock } from '../clients';
+
 import {
   CreatePedidoDto,
   ItemPedidoResponseDto,

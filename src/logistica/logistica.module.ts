@@ -3,9 +3,6 @@ import { Module } from '@nestjs/common';
 // Database
 import { DatabaseModule } from '../datasources/database.module';
 
-// Clients
-import { TiendaClientMock } from './clients';
-
 // Repositories
 import {
   CatalogoProductoRepository,
