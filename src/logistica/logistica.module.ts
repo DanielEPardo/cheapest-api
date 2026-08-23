@@ -45,9 +45,13 @@ import {
 } from './controllers';
 
 import { repositoryProviders } from './repositories/repository.providers';
+import { IdentificacionModule } from 'src/identificacion/identificacion.module';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [
+    DatabaseModule,
+    IdentificacionModule
+  ],
   controllers: [
     CatalogoController,
     ProductoController,
@@ -81,8 +85,6 @@ import { repositoryProviders } from './repositories/repository.providers';
     DisponibilidadZonaService,
     CatalogoProductoService,
     TenderoService,
-    // Mock Clients
-    TiendaClientMock,
   ],
   exports: [
     CatalogoService,

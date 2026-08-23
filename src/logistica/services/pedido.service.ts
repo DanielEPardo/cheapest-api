@@ -13,18 +13,19 @@ import {
 } from '../dtos';
 import { PedidoRepository, ProductoRepository } from '../repositories';
 import { ItemPedido, Pedido } from '../repositories/entities';
+import { TiendaService } from 'src/identificacion/services/tienda.service';
 
 @Injectable()
 export class PedidoService {
   constructor(
     private readonly pedidoRepository: PedidoRepository,
     private readonly productoRepository: ProductoRepository,
-    private readonly tiendaClient: TiendaClientMock,
+    private readonly tiendaService: TiendaService,
   ) {}
 
   async create(dto: CreatePedidoDto): Promise<PedidoResponseDto> {
     // Validar que la tienda existe
-    const tiendaExists = await this.tiendaClient.exists(dto.tiendaId);
+    const tiendaExists = await this.tiendaService.findById(dto.tiendaId);
     if (!tiendaExists) {
       throw new BadRequestException(`Tienda con id ${dto.tiendaId} no existe`);
     }

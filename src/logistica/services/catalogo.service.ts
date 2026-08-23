@@ -12,16 +12,17 @@ import {
 } from '../dtos';
 import { CatalogoRepository } from '../repositories';
 import { Catalogo } from '../repositories/entities';
+import { TiendaService } from 'src/identificacion/services/tienda.service';
 
 @Injectable()
 export class CatalogoService {
   constructor(
     private readonly catalogoRepository: CatalogoRepository,
-    private readonly tiendaClient: TiendaClientMock,
+    private readonly tiendaService: TiendaService,
   ) {}
 
   async create(dto: CreateCatalogoDto): Promise<CatalogoResponseDto> {
-    const tiendaExists = await this.tiendaClient.exists(dto.tiendaId);
+    const tiendaExists = await this.tiendaService.findById(dto.tiendaId);
     if (!tiendaExists) {
       throw new BadRequestException(`Tienda con id ${dto.tiendaId} no existe`);
     }
